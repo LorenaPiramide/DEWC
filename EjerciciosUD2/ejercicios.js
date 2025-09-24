@@ -64,5 +64,11 @@ alert(`Dentro de ${numeroYears} años tendrás ${edad + numeroYears} años.`); *
 
 // EJERCICIO 4: Pide al usuario un string, Muestra en el documento la posición que ocupa la primera “a”
 
-let texto = prompt("Dime una palabra o frase.");
-console.log(texto.indexOf('a'));
+/* let texto = prompt("Dime una palabra o frase.");
+console.log(texto.indexOf('a')); recordamos que la primera posición es 0 */
+
+// EJERCICIO 5: Pide al usuario tres strings, debes sustituir en el primer string la primera ocurrencia del segundo string por el contenido del tercer string. ejemplo
+// string 1 “Hola caracola”
+// string 2 “cara”
+// string 3 “era”
+// resultado a mostrar con un alert “Hola eracola”.
