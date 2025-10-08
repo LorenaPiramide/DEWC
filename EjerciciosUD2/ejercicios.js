@@ -177,3 +177,93 @@ if (index !== -1) {
 } else {
     console.log('No hay una fruta con ese nombre.');
 } */
+
+// EJERCICIO 20: Escribe tres funciones suma que acepte un número indeterminado de argumentos y devuelva la suma de todos ellos.
+// Debes evitar que la función devuelva “undefined” si no se le pasa ningún argumento, en cuyo caso el valor que devuelva tiene que ser 0.
+// Debes escribir cada versión de la función  de las tres formas que hemos visto.
+// suma1 , declaración tradicional de una función
+// suma2, función como expresión.
+// suma3, función flecha.
+
+/* function sumaTradicional(...valores) {
+    let suma = 0;
+
+    for (let valor of valores) {
+        suma += valor;
+    }
+
+    return suma;
+}
+
+let resultadoTradicional = sumaTradicional();
+console.log(resultadoTradicional);
+
+let sumaExpresion = function(...valores) {
+    let suma = 0;
+
+    for (let valor of valores) {
+        suma += valor;
+    }
+
+    
+} */
+
+// EJERCICIO 27: Define una función a la que le pasaremos un número y el tipo de redondeo a realizar. 
+// La función devolverá el resultado del redondeo y además mostrará el valor del redondeo en el documento junto a un mensaje indicando el tipo de redondeo.
+
+/* let numero = 4.6;
+
+let redondeo = function(numero) {
+    return Math.round(numero);
+}
+
+document.body.innerHTML = "<p>Resultado del redondeo del número " + numero + " es " + redondeo(numero) + ". Su tipo de redondeo es round, el entero más cercano.</p>"; */
+
+// EJERCICIO 28: Define una función a la que le pasaremos dos enteros (limite inferior y límite superior) y la función nos devolverá un entero aleatorio 
+// en el rango [limiteInferior,limiteSuperior). Además mostrará en el documento un mensaje indicando el número aleatorio y el rango en el que se encuentra.
+
+/* let numeroInferior = 4;
+let numeroSuperior = 15;
+
+let random = function(numeroInferior, numeroSuperior) {
+    return Math.floor(Math.random() * (numeroSuperior - numeroInferior)) + numeroInferior;
+}
+
+document.body.innerHTML = "<p>Número random entre el " + numeroInferior + " y el " + numeroSuperior + " es " + random(numeroInferior, numeroSuperior) + ".</p>"; */
+
+// EJERCICIO 29: Define una función a la que le pasaremos un ángulo y la función trigonométrica a aplicar 
+// y nos devolverá el resultado de aplicar la función trigonométrica  y mostrará en el documento la operación aplicada con el resultado.
+
+/* let angulo = 90;
+
+let seno = function(angulo) {
+    console.log(Math.sin(angulo))
+    return Math.sin(angulo);
+}
+
+let coseno = function(angulo) {
+    return Math.cos(angulo);
+}
+
+document.body.innerHTML = "<p>El seno de " + angulo + " es " + seno(angulo) + ", y el coseno es " + coseno(angulo) + ".</p>"; */
+
+// EJERCICIO 30: Define una función que muestre la fecha actual en diferentes formatos
+//5/10/2021
+//Wed Oct 06 2021.
+//Wed, 06 Oct 2021 15:54:47 GMT
+
+let fechaActual = new Date();
+
+let fechaActualFormatos = function(fechaActual) {
+    let soloFecha = fechaActual.toDateString();
+    let regional = fechaActual.toLocaleDateString();
+    let hora = fechaActual.toTimeString();
+    let horaRegional = fechaActual.toLocaleTimeString();
+    let iso = fechaActual.toISOString();
+    let utc = fechaActual.toUTCString();
+
+    return document.body.innerHTML = "<p>Solo fecha: " + soloFecha + ". Hora regional: " + regional + ". Hora: " + hora + ". Hora regional: " + horaRegional + 
+    ". ISO: " + iso + ". UTC: " + utc + ".</p>"
+}
+
+fechaActualFormatos(fechaActual);
