@@ -304,10 +304,12 @@ horaActual(fechaActual); */
 // EJERCICIO 32: Define una función que muestre el número de días que quedan desde hoy hasta el fin de curso (el 23 de junio).
 
 let hoy = new Date().getTime();
-let finCurso = new Date("2025-05-21").getTime();
+let finCurso = new Date("2026-05-21").getTime();
 
 let fechas = function(finCurso, hoy) {
     let diferencia = finCurso - hoy;
     let dias = diferencia/1000;
+    return dias;
 }
 
+console.log(fechas(finCurso, hoy));
