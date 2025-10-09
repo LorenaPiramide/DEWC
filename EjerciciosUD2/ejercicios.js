@@ -252,7 +252,7 @@ document.body.innerHTML = "<p>El seno de " + angulo + " es " + seno(angulo) + ",
 //Wed Oct 06 2021.
 //Wed, 06 Oct 2021 15:54:47 GMT
 
-let fechaActual = new Date();
+/* let fechaActual = new Date();
 
 let fechaActualFormatos = function(fechaActual) {
     let soloFecha = fechaActual.toDateString();
@@ -266,4 +266,48 @@ let fechaActualFormatos = function(fechaActual) {
     ". ISO: " + iso + ". UTC: " + utc + ".</p>"
 }
 
-fechaActualFormatos(fechaActual);
+fechaActualFormatos(fechaActual); */
+
+// EJERCICIO 31: Define una función que muestre la hora actual en diferentes formatos
+// 14:35:07 (hora detallada con minutos y segundos)
+// 02:35 PM o 02:35 AM (hora con minutos y AM o PM según sea antes o después del medio día).
+
+/* let fechaActual = new Date();
+
+let horaActual = function(fechaActual) {
+
+    let hora = fechaActual.getHours();
+    let min = fechaActual.getMinutes();
+    let secs = fechaActual.getSeconds();
+
+    let horas12 = 12 % hora;
+
+    if (horas12 === 12) {
+        horas12 = 12;
+    }
+
+    let am_pm;
+
+    if (hora > 12) {
+        am_pm = "PM";
+    } else {
+        am_pm = "AM";
+    }
+
+    //return document.body.innerHTML = "<p>Hora detallada -> " + hora + ":" + min + ":" + secs + ".</p>";
+    return document.body.innerHTML = "<p>Hora detallada -> " + hora + ":" + min + ":" + secs + ". Hora AM/PM -> " + horas12 + ":" + min + " " + am_pm + ".</p>";
+
+}
+
+horaActual(fechaActual); */
+
+// EJERCICIO 32: Define una función que muestre el número de días que quedan desde hoy hasta el fin de curso (el 23 de junio).
+
+let hoy = new Date().getTime();
+let finCurso = new Date("2025-05-21").getTime();
+
+let fechas = function(finCurso, hoy) {
+    let diferencia = finCurso - hoy;
+    let dias = diferencia/1000;
+}
+
