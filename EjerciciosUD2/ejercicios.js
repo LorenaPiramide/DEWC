@@ -268,7 +268,6 @@ if (index !== -1) {
 
 
 
-
 // EJERCICIO 20: Escribe tres funciones suma que acepte un número indeterminado de argumentos y devuelva la suma de todos ellos.
 // Debes evitar que la función devuelva “undefined” si no se le pasa ningún argumento, en cuyo caso el valor que devuelva tiene que ser 0.
 // Debes escribir cada versión de la función  de las tres formas que hemos visto.
@@ -295,27 +294,125 @@ let sumaExpresion = function(...valores) {
     for (let valor of valores) {
         suma += valor;
     }
-
-    
 } */
 
+// EJERCICIO 21: Escribe una función denominada “operacionesEncadenadas” con los siguientes argumentos
+// Dos valores que actuarán de datos para las operaciones.
+// El tercero y cuarto dos funciones callback que definiremos aparte. La primera devolverá la suma de los dos datos. La segunda el producto
+// El último argumento será una función callback que pasaremos en la llamada a la función como función flecha con un mensaje por pantalla al usuario
 
+/* let a = parseInt(prompt("Dime un número:"));
+let b = parseInt(prompt("Dime otro número:"));
 
+let operacionesEncadenadas = function(x, y, operacion1, operacion2, final) {
+    document.writeln("Operación suma: " + operacion1(x, y));
+    document.writeln("Operación producto: " + operacion2(x, y));
+    final();
+}
 
+function suma(op1, op2) {
+    return op1 + op2;
+}
 
+let producto = (x = 1, y) => x * y;
 
+operacionesEncadenadas(a, b, suma, producto, () => alert("Hasta luego.")); */
 
+// EJERCICIO 22: Crea una función que sume todos los elementos de un array numérico.(Sin recorrer el Array)
 
+/* function sumaArray(array) {
+    return array.reduce((suma, valorActual) => suma + valorActual); // Suma es como un acumulador, suma y almacena los números sumados. Con String sería una concatenación, por ejemplo
+}
 
+document.writeln(sumaArray([1, 2, 3])); */
 
+// Por ejemplo, aquí buscaríamos el máximo valor del array numérico. let maximo = numeros.reduce((max, val) => val > max ? val : max);
 
+// EJERCICIO 23: Encuentra y muestra todos los números pares de un array. (Sin recorrer el Array)
 
+/* const array = [1, 2, 3, 4, 5, 6];
 
+let buscarPares = (numeroActual) => {
+    numeroActual % 2 == 0 ? document.writeln(`${numeroActual}<br>`) : "";
+}
 
+let numerosPares = array.reduce(buscarPares);  */// Ejecuta la función en todos los elementos del array. No se pasa el número porque el reduce se encarga de poner número a número
 
+// EJERCICIO 24: Encuentra la palabra más larga en un array de palabras.
 
+/* let array = ["patata", "lechuga", "perejil", "alcachofa"];
 
+let palabraMasLarga = array.reduce(
+    (palabraLarga, palabraActual) => palabraActual.length >= palabraLarga.length ? palabraActual : palabraLarga
+);
 
+document.writeln("La palabra más larga es: " + palabraMasLarga); */
+
+// EJERCICIO 25: Elimina los elementos duplicados de un array. (Usa la estructura Set como ayuda)
+
+/* const array = ["patata", "patata", "lechuga", "alcachofa", "Alcachofa"];
+const arraySet = new Set(array); // Podemos convertir un array normal en un array sin duplicados
+const arraySinDuplicados = Array.from(arraySet); // Convierte el nuevo Set en un array normal sin los duplicados para poder leerlo
+console.log(arraySinDuplicados); */
+
+// EJERCICIO 26: Usando el siguiente array que contiene una lista de nombres de países vamos a crear una serie de funciones para realizar diferentes operaciones sobre ese array. 
+const paises = ["México", "Japón", "Italia", "Australia", "Brasil", "Canadá", "Francia", "Alemania", "India", "Argentina", "España", "China", "Sudáfrica", "Rusia", "Corea del Sur", "Reino Unido", "Estados Unidos", "Indonesia", "Egipto", "Turquía"];
+// Función mostrarArray. Nos muestra en el documento HTML el número de elementos del array y a continuación el contenido del array en una lista numerada (ol)
+// Función mostrarArrayAlreves. Igual que la anterior pero antes de mostrarlo lo ordena en sentido inverso. El array queda modificado.
+// Función añadirElemento. Nos debe pedir un elemento y preguntarnos si lo queremos añadir al principio, al final o en una posición concreta. Después lo añadimos en dicha posición y lo mostramos con la función mostrarArray.
+// Función eliminarElementoPosicion. La función debe dar la opción de eliminar al principio, al final o en una posición dada por el usuario. Después mostramos el array modificado con la función mostrarArray
+// Función buscarPais. La función nos devuelve la posición de una país, o -1 si no lo encuentra.
+// Función añadirPais. La función nos comprueba si un país que nos pasa el usuario existe y en caso de que no exista lo inserta al final. Si existe lo indica con un mensaje indicando la posición. La función devuelve la posición en la que está el país, o la posición en la que lo ha insertado.
+// Función eliminar Pais. La función elimina un país que le pasamos como parámetro. Nos indica la posición en la que lo ha encontrado y borrado. La función devuelve la posición o -1 si no lo ha podido borrar. El array no debe quedar con espacios vacíos tras la eliminación
+
+/* function mostrarArray(array) {
+    document.writeln(`<p>El array tiene ${array.length} elementos</p><ol>`);
+    array.forEach(element => {
+        document.writeln(`<li>${element}`);
+    });
+    document.writeln("</ol>")
+} */
+
+//mostrarArray(paises);
+//mostrarArray(paises.reverse());
+
+/* function addPais(array) {
+    let posicion = prompt("¿En que posición quieres añadir el país?");
+    let pais = prompt("¿Qué país quieres añadir?");
+
+    array.splice(posicion, 0, pais); // Con splice puedes borrar también, por lo que el 0 significa "borrar 0", si quisieramos borrar 2 elementos, debería ir un 2 ahí. posición tiene que ser un número, que es el lugar a insertar o eliminar
+    mostrarArray(paises);
+} */
+
+/* function addPais(array) {
+    let pais = prompt("¿Qué país quieres añadir?");
+    let posicion = array.indexOf(pais);
+
+    if(posicion == -1) {
+        array.push(pais);
+        document.writeln(`El país ${pais} ha sido añadido al final del array.`);
+    } else {
+        document.writeln(`El país ${pais} ya estaba en la posición ${posicion + 1}.`);
+    }
+}
+
+addPais(paises);
+mostrarArray(paises); */
+
+/* function eliminarPais(array) {
+    let paisAEliminar = prompt("¿Qué país quieres eliminar?");
+    let posicion = array.indexOf(paisAEliminar);
+
+    if(posicion == -1) {
+        document.writeln(`El país ${paisAEliminar} no se puede eliminar, no está en la lista.`);
+    } else {
+        array.splice(posicion, 1);
+        document.writeln(`El país ${paisAEliminar} estaba en la posición ${posicion + 1} y ha sido eliminado.`)
+    }
+}
+
+eliminarPais(paises);
+mostrarArray(paises); */
 
 
 // EJERCICIO 27: Define una función a la que le pasaremos un número y el tipo de redondeo a realizar. 
