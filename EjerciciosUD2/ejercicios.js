@@ -1,5 +1,5 @@
 
-// Mayus + ctrl + a -> Comentario
+// Mayus + alt + a -> Comentario
 
 //EJERCICIO 1: Declara 6 variables a las que asignaremos los siguientes valores. 1357, 135.7, 135e7, 0b1010, 0o1357 y 0x1A57.
 //Una vez creadas muestra por consola los valores almacenados y el tipo de dato que nos indica el operador typeof.
@@ -74,6 +74,89 @@ console.log(texto.indexOf('a')); recordamos que la primera posición es 0 */
 // string 3 “era”
 // resultado a mostrar con un alert “Hola eracola”.
 
+// let primerString = prompt("Dime una palabra:");
+// let segundoString = prompt("Dime lo que quieres intercambiar de tu palabra:");
+// let tercerString = prompt("Dime las nueva letras:");
+
+// let nuevoString = primerString.replace(segundoString, tercerString);
+
+// console.log(primerString);
+// console.log(nuevoString);
+
+//EJERCICIO 6: Amplía el ejercicio anterior a todas las ocurrencias.
+
+/* let primerString = prompt("Dime una palabra:");
+let segundoString = prompt("Dime lo que quieres intercambiar de tu palabra:");
+let tercerString = prompt("Dime las nueva letras:");
+
+let nuevoString = primerString.replaceAll(segundoString, tercerString);
+
+console.log(primerString);
+console.log(nuevoString); */
+
+//EJERCICIO 7: Pide dos strings al usuario. Debes mostrar el número de veces que el segundo string está incluido en el primero. Es la cadena exacta consecutiva.
+
+// let string1 = prompt("Dime un primer String:");
+// let string2 = prompt("Dime un segundo String:");
+
+// console.log([...string1.matchAll(string2)].length);
+
+// EJERCICIO 8: ¿Cuáles son los resultados de estas expresiones? Anotalo en un comentario antes de ejecutarlo y luego compruébalo mostrándolo por consola.
+
+// let expresion = "" + 1 + 0; → 10
+// let expresion = "" + 1 - 0; → 1
+// let expresion = true + false; // → 1
+// let expresion = 6 / "3"; // → 2
+// let expresion = "2" * "3"; // → 6
+// let expresion = 5 + 4 + "px"; // → 9px
+// let expresion = "$" + 4 + 5; // → $45
+// let expresion = "4" - 2; // → 2
+// let expresion = "4px" -  2; // → NaN
+// let expresion = "   -9  " + 5; // →   -9   5
+//let expresion = "   -9  " - 5; // → -14
+// let expresion = null + 1; // → 1
+// let expresion = undefined + 1; // → NaN
+// let expresion = "\t \n" - 2; // → -2
+
+// console.log(expresion);
+
+// EJERCICIO 9: Arregla el código para que el resultado sea 3
+
+// let a = Number(prompt("¿Primer número?", 1));
+// let b = Number(prompt("¿Segundo número?", 2));
+
+// alert(a + b);
+
+// EJERCICIO 10: ¿Cuáles son los valores finales de todas las variables a, b, c y d después del código a continuación?
+
+// let a = 1, b = 1;
+// let c = ++a; // 2. Incrementa el valor y luego lo muestra
+// let d = b++; // 1 Primero muestra el valor y luego lo incrementa
+
+// console.log(c);
+// console.log(d);
+
+// EJERCICIO 11: ¿Cuál será el resultado de las siguientes expresiones?
+
+// let expresion = 5 > 4; // → True
+// let expresion = "apple" > "pineapple"; // → false
+// let expresion = "2" > "12"; // → true. Comparara el carácter 2 con el 1(2), aunque sea 12, es true, 2 > 1
+// let expresion = undefined == null; // → true. Convierte undefined a null, por lo que, ahora, es null es igual a null, true
+// let expresion = undefined == null; // → false. Compara pero sin hacer la conversión
+// let expresion = null == "\n0\n"; // → false. En este caso, al usar un comparador con un String, estos se comportan igual que con ===
+// let expresion = null === "\n0\n"; // → false. Aunque no fuera un String, daría false igual.
+
+// console.log(expresion);
+
+// EJERCICIO 12: Usa el operador “?” para escribir un código que nos pida un número y nos muestre un mensaje si es mayor o igual que cero y otro mensaje si es menor estricto que cero.
+
+// let numeroUsuario = Number(prompt("Dime un número o negativo o positivo."));
+
+// let comparador = (numero) => {
+//     return numero > 0 ? "Es mayor." : "Es menor.";
+// }
+
+// console.log(comparador(numeroUsuario));
 
 // EJERCICIO 13: Crea un programa  utilizando la sentencia if else  que pida al usuario que introduzca una edad y muestre el siguiente mensaje en función del número introducido:
 //0-12: Niño
@@ -178,6 +261,14 @@ if (index !== -1) {
     console.log('No hay una fruta con ese nombre.');
 } */
 
+
+
+// LOS EJERCICIOS QUE FALTAN AQUÍ SON LOS QUE NO HAY QUE HACER
+
+
+
+
+
 // EJERCICIO 20: Escribe tres funciones suma que acepte un número indeterminado de argumentos y devuelva la suma de todos ellos.
 // Debes evitar que la función devuelva “undefined” si no se le pasa ningún argumento, en cuyo caso el valor que devuelva tiene que ser 0.
 // Debes escribir cada versión de la función  de las tres formas que hemos visto.
@@ -207,6 +298,25 @@ let sumaExpresion = function(...valores) {
 
     
 } */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // EJERCICIO 27: Define una función a la que le pasaremos un número y el tipo de redondeo a realizar. 
 // La función devolverá el resultado del redondeo y además mostrará el valor del redondeo en el documento junto a un mensaje indicando el tipo de redondeo.
@@ -301,15 +411,110 @@ let horaActual = function(fechaActual) {
 
 horaActual(fechaActual); */
 
-// EJERCICIO 32: Define una función que muestre el número de días que quedan desde hoy hasta el fin de curso (el 23 de junio).
+// EJERCICIO 32: Define una función que muestre el número de días que quedan desde hoy hasta el fin de curso (el 23 de junio). 1000 → 1sec 1000 milisegundos, etc
 
-let hoy = new Date().getTime();
-let finCurso = new Date("2026-05-21").getTime();
+// let hoy = new Date().getTime();
+// let finCurso = new Date("2026-06-21").getTime();
 
-let fechas = function(finCurso, hoy) {
-    let diferencia = finCurso - hoy;
-    let dias = diferencia/1000;
-    return dias;
+// let fechas = function(finCurso, hoy) {
+//     let diferencia = finCurso - hoy;
+//     let dias = Math.ceil(diferencia / (1000 * 60 * 60 * 24));
+//     return dias;
+// }
+
+// console.log("Días hasta fin de curso: ", fechas(finCurso, hoy));
+
+// EJERCICIO 33: Crea un programa que pida por parámetro tu cumpleaños (sin año) y saque todos los años en que tu cumpleaños va a caer en domingo desde este año hasta el año 2100. 
+// Por ejemplo, introducir el 05/23 para el día 23 de mayo.
+
+/* let yearActual = new Date().getFullYear();
+let cumpleUsuario = prompt("Dime la fecha de tu cumplaños, sin el añoo (dd/mm)."); // Hay que partir la fecha para que funcione porque js no reconoce ese formato
+
+let parteFecha = cumpleUsuario.split("/");
+
+let dia = parseInt(parteFecha[0]);
+let mes = parseInt(parteFecha[1]) -1; // Porque el mes empieza en 0 Enero
+
+for (let year = yearActual; year <= 2100; year++) {
+    let fechaAComprobar = new Date(year, mes, dia); // Creamos el cumpleaños a partir de este año, porque nos dan igual los años anteriores
+
+    if (fechaAComprobar.getDay() === 0) { // 0 → Domingo
+        console.log(year);
+    }
+} */
+
+// EJERCICIO 34: Escribe una función para mostrar el día de la semana en formato corto: ‘MO’, ‘TU’, ‘WE’, ‘TH’, ‘FR’, ‘SA’, ‘SU’.
+
+/* let fechaUsuario = prompt("Dime una fecha (dd/mm/yyyy):");
+
+let parteFecha = fechaUsuario.split("/");
+
+let dia = parseInt(parteFecha[0]);
+let mes = parseInt(parteFecha[1]) - 1;
+let year = parseInt(parteFecha[2]);
+
+let fecha = new Date(year, mes, dia);
+
+let diaSemana = fecha.getDay();
+
+let mostrarDiaSemana = (numeroDia) => {
+    switch (numeroDia) {
+        case 0:
+            console.log("SU");
+            break;
+        case 1:
+            console.log("MO");
+            break;
+        case 2:
+            console.log("TU");
+            break;
+        case 3:
+            console.log("WE");
+            break;
+        case 4:
+            console.log("TH");
+            break;
+        case 5:
+            console.log("FR");
+            break;
+        case 6:
+            console.log("SA");
+            break;
+    }
 }
 
-console.log(fechas(finCurso, hoy));
+mostrarDiaSemana(diaSemana); */
+
+// EJERCICIO 35: Escribe una función que devuelva el último día del mes dado para un año dado. A veces es 30, 31 o incluso 28/29 para febrero.
+
+/* let mesYear = prompt("Dime un mes y un año (mm/yyyy):");
+
+let parteFecha = mesYear.split("/");
+
+let mes = parseInt(parteFecha[0]) -1;
+let year = parseInt(parteFecha[1]);
+
+let ultimoDia = (mes, year) => {
+    let ultimoDia = new Date(year, mes + 1, 0); // Obtenemos el día 0 del mes siguiente, lo que es el último día del mes anterior
+
+    console.log(ultimoDia.getDate()); // Devuelve el día del mes
+}
+
+ultimoDia(mes, year); */
+
+// EJERCICIO 36: Escribe una función que devuelva la cantidad de segundos transcurridos desde el comienzo del día.
+
+// let segundosTranscurridos = () => {
+//     let actual = new Date();
+
+//     let inicioDia = new Date();
+//     inicioDia.setHours(0, 0, 0, 0); // 0h 0min 0secs 0ms
+
+//     let diferencia = actual - inicioDia;
+
+//     let segundos = Math.floor(diferencia/1000);
+
+//     return segundos;
+// }
+
+// console.log(segundosTranscurridos() + " segundos transcurridos.");
