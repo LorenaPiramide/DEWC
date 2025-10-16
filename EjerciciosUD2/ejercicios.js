@@ -356,7 +356,7 @@ const arraySinDuplicados = Array.from(arraySet); // Convierte el nuevo Set en un
 console.log(arraySinDuplicados); */
 
 // EJERCICIO 26: Usando el siguiente array que contiene una lista de nombres de países vamos a crear una serie de funciones para realizar diferentes operaciones sobre ese array. 
-const paises = ["México", "Japón", "Italia", "Australia", "Brasil", "Canadá", "Francia", "Alemania", "India", "Argentina", "España", "China", "Sudáfrica", "Rusia", "Corea del Sur", "Reino Unido", "Estados Unidos", "Indonesia", "Egipto", "Turquía"];
+// const paises = ["México", "Japón", "Italia", "Australia", "Brasil", "Canadá", "Francia", "Alemania", "India", "Argentina", "España", "China", "Sudáfrica", "Rusia", "Corea del Sur", "Reino Unido", "Estados Unidos", "Indonesia", "Egipto", "Turquía"];
 // Función mostrarArray. Nos muestra en el documento HTML el número de elementos del array y a continuación el contenido del array en una lista numerada (ol)
 // Función mostrarArrayAlreves. Igual que la anterior pero antes de mostrarlo lo ordena en sentido inverso. El array queda modificado.
 // Función añadirElemento. Nos debe pedir un elemento y preguntarnos si lo queremos añadir al principio, al final o en una posición concreta. Después lo añadimos en dicha posición y lo mostramos con la función mostrarArray.
@@ -424,6 +424,8 @@ let redondeo = function(numero) {
     return Math.round(numero);
 }
 
+// Tenia que ser round, floor y ceil
+
 document.body.innerHTML = "<p>Resultado del redondeo del número " + numero + " es " + redondeo(numero) + ". Su tipo de redondeo es round, el entero más cercano.</p>"; */
 
 // EJERCICIO 28: Define una función a la que le pasaremos dos enteros (limite inferior y límite superior) y la función nos devolverá un entero aleatorio 
@@ -433,7 +435,7 @@ document.body.innerHTML = "<p>Resultado del redondeo del número " + numero + " 
 let numeroSuperior = 15;
 
 let random = function(numeroInferior, numeroSuperior) {
-    return Math.floor(Math.random() * (numeroSuperior - numeroInferior)) + numeroInferior;
+    return Math.floor(Math.random() * (numeroSuperior - numeroInferior + 1)) + numeroInferior;
 }
 
 document.body.innerHTML = "<p>Número random entre el " + numeroInferior + " y el " + numeroSuperior + " es " + random(numeroInferior, numeroSuperior) + ".</p>"; */
@@ -452,6 +454,8 @@ let coseno = function(angulo) {
     return Math.cos(angulo);
 }
 
+// habría que hacer un switch con cada uno
+
 document.body.innerHTML = "<p>El seno de " + angulo + " es " + seno(angulo) + ", y el coseno es " + coseno(angulo) + ".</p>"; */
 
 // EJERCICIO 30: Define una función que muestre la fecha actual en diferentes formatos
@@ -459,7 +463,7 @@ document.body.innerHTML = "<p>El seno de " + angulo + " es " + seno(angulo) + ",
 //Wed Oct 06 2021.
 //Wed, 06 Oct 2021 15:54:47 GMT
 
-/* let fechaActual = new Date();
+/* let fechaActual = new Date(); // He puesto de más
 
 let fechaActualFormatos = function(fechaActual) {
     let soloFecha = fechaActual.toDateString();
@@ -495,6 +499,8 @@ let horaActual = function(fechaActual) {
 
     let am_pm;
 
+// Hay un truco para hacer esto, diciendo que estamos en EEUU, está en la corrección de GitHub
+
     if (hora > 12) {
         am_pm = "PM";
     } else {
@@ -515,7 +521,7 @@ horaActual(fechaActual); */
 
 // let fechas = function(finCurso, hoy) {
 //     let diferencia = finCurso - hoy;
-//     let dias = Math.ceil(diferencia / (1000 * 60 * 60 * 24));
+//     let dias = Math.ceil(diferencia / (1000 * 60 * 60 * 24)); //.floor también vale
 //     return dias;
 // }
 
@@ -523,6 +529,8 @@ horaActual(fechaActual); */
 
 // EJERCICIO 33: Crea un programa que pida por parámetro tu cumpleaños (sin año) y saque todos los años en que tu cumpleaños va a caer en domingo desde este año hasta el año 2100. 
 // Por ejemplo, introducir el 05/23 para el día 23 de mayo.
+
+// lo he hecho diferente
 
 /* let yearActual = new Date().getFullYear();
 let cumpleUsuario = prompt("Dime la fecha de tu cumplaños, sin el añoo (dd/mm)."); // Hay que partir la fecha para que funcione porque js no reconoce ese formato
@@ -588,6 +596,8 @@ mostrarDiaSemana(diaSemana); */
 
 let parteFecha = mesYear.split("/");
 
+// creo que si le quitas el -1 y el +1 sale igual, porque el usuario te da el 3(marzo), y para js es 2, por lo que ya está hecho, 3 es abril, por lo que no hay que sumar luego
+
 let mes = parseInt(parteFecha[0]) -1;
 let year = parseInt(parteFecha[1]);
 
@@ -600,6 +610,8 @@ let ultimoDia = (mes, year) => {
 ultimoDia(mes, year); */
 
 // EJERCICIO 36: Escribe una función que devuelva la cantidad de segundos transcurridos desde el comienzo del día.
+
+// eCorregir, lo he hecho diferente
 
 // let segundosTranscurridos = () => {
 //     let actual = new Date();
