@@ -5,109 +5,148 @@ class Invitado {
     }
 }
 
+class Alerta {
+    constructor(fechaHora, mensajeAlerta, timerID = null) {
+        this.fechaHora = fechaHora;
+        this.mensajeAlerta = mensajeAlerta;
+        this.timerID = timerID;
+    }
+}
+
 class Evento {
-    constructor(nombre, texto, fechaHora, lugar, invitado) {
+    constructor(nombre, texto, fechaHora, lugar, invitados, alertas) {
         this.nombre = nombre;
         this.texto = texto;
         this.fechaHora = fechaHora;
         this.lugar = lugar;
-        this.invitado = invitado;
+        this.invitados = invitados;
+        this.alertas = alertas;
     }
 }
 
-function cargarAgenda(){
-    const agendaLS = JSON.parse(localStorage.getItem("agenda")) || []; //Esto último siempre va a ser true, si no funciona lo primero, haz un array vacío
-    return agendaLS.map((evento) => new Evento(evento));
+function cargarAgenda() {
+    const agendaLS = JSON.parse(localStorage.getItem("agenda")) || [];
+    return agendaLS.map((evento) => {
+        const alertasConvertidas = evento.alertas.map(alerta => {
+            return new Alerta(
+                new Date(alerta.fechaHora),
+                alerta.mensajeAlerta,
+                alerta.timerID
+            );
+        });
+        
+        return new Evento(
+            evento.nombre,
+            evento.texto,
+            new Date(evento.fechaHora),
+            evento.lugar,
+            evento.invitados,
+            alertasConvertidas
+        );
+    });
 }
 
-// Creo que con eso puedo mirar si hay una agenda y cargar la agenda ??
-//function crearAgenda() {}
 const agenda = cargarAgenda();
+// Cuando inicia el programa, las alertas se vuelven a activar, porque cuando el programa se cierra, las alertas se desactivan
+for (const evento of agenda) {
+    activarAlertasEvento(evento);
+}
 
 menuAgenda();
 
 function menuAgenda() {
-    let opcion = prompt(
-        "Bienvenido a la agenda, elige una opción.\n" +
-        "1- Añadir evento.\n" +
-        "2- Borrar evento.\n" +
-        "3- Modificar evento.\n" +
-        "4- Desactivar alertas del evento.\n" + // con timeout
-        "5- Borrar evento pasado.\n" +
-        "6- Salir sin guardar.\n" +
-        "7- Salir, guardar y mostrar agenda."
-    );
+    let continuar = true;
+    while (continuar) {
+        let opcion = prompt(
+            "Bienvenido a la agenda, elige una opción.\n" +
+            "1- Añadir evento.\n" +
+            "2- Borrar evento.\n" +
+            "3- Modificar evento.\n" +
+            "4- Desactivar alertas del evento.\n" + // con timeout
+            "5- Borrar evento pasado.\n" +
+            "6- Salir sin guardar.\n" +
+            "7- Salir, guardar y mostrar agenda."
+        );
 
-    switch (opcion) {
-        case '1':
-            addEvento();
-            break;
-        case '2':
-            borrarEvento();
-            break;
-        case '3':
-            modificarEvento();
-            break;
-        case '4':
-            desactivarAlertas();
-            break;
-        case '5':
-            borrarEventoAnterior();
-            break;
-        case '6':
-            // No hace falta función, el break se encarga de salir del programa
-            break;
-        case '7':
-            guardarMostrarEvento();
-            break;
+        switch (opcion) {
+            case '1':
+                addEvento();
+                break;
+            case '2':
+                borrarEvento();
+                break;
+            case '3':
+                modificarEvento();
+                break;
+            case '4':
+                desactivarAlertas();
+                break;
+            case '5':
+                borrarEventosPasados();
+                break;
+            case '6':
+                // No hace falta función, el break se encarga de salir del programa
+                continuar = false;
+                break;
+            case '7':
+                guardarMostrarEvento();
+                continuar = false;
+                break;
+        }
     }
 }
 
 function addEvento() {
-    let nombreEvento = "";
-    while (nombreEvento === null || nombreEvento === "") {
-        nombreEvento = prompt("Dime el nombre del evento.");
-    }
+    let nombreEvento = prompt("Dime el nombre del evento.");
+    let textoEvento = prompt("Dime el texto del evento.");
+    let fechaHoraEvento = new Date(prompt("Dime la fecha y la hora del evento (AAAA-MM-DDTHH:MM)."));
+    let lugarEvento = prompt("Dime el lugar del evento.");
 
-    let textoEvento = "";
-    while (textoEvento === null || textoEvento === "") {
-        textoEvento = prompt("Dime el texto del evento.");
-    }
-
-    let fechaHoraEvento = "";
-    while (fechaHoraEvento === null ||  fechaHoraEvento === "") {
-        fechaHoraEvento = new Date(prompt("Dime la fecha y la hora del evento (AAAA-MM-DDTHH:MM)."));
-    }
-
-    let lugarEvento = "";
-    while (lugarEvento === null || lugarEvento === "") {
-        lugarEvento = prompt("Dime el lugar del evento.");
-    }
-
-    let numInvitadosEvento = parseInt(prompt("¿Cuántos invitados quieres en el evento?"));
     const invitados = [];
-    for (var i = 0; i < numInvitadosEvento; i++) {
-        let nombreInvitado = "";
-        while (nombreInvitado === null || nombreInvitado === "") {
-            nombreInvitado = prompt("Dime el nombre del invitado " + (i+1) + ".");
-        }
-
+    let continuar = true;
+    while (continuar) {
+        let nombreInvitado = prompt("Dime el nombre del invitado.");
         let emailInvitado = "";
-        while (emailInvitado === null || emailInvitado === "" || !emailInvitado.includes("@")) {
-            if (!emailInvitado !== null && emailInvitado !== "" && !emailInvitado.includes("@")) {
+        while (!emailInvitado.includes("@")) {
+            emailInvitado = prompt("Dime el email del invitado.");
+            if (!emailInvitado.includes("@")) {
                 alert("El email debe llevar una @");
             }
-            emailInvitado = prompt("Dime el email del invitado.");
         }
-    
         invitados.push(new Invitado(nombreInvitado, emailInvitado));
+
+        if (prompt("¿Quieres otro invitado? (s/n)") !== "s") {
+            continuar = false; // Aquí pararía el while
+        }
     }
 
-    let nuevoEvento = new Evento(nombreEvento, textoEvento, fechaHoraEvento, lugarEvento, invitados);
+    const alertas = [];
 
+    let confirmacion = prompt("¿Quieres añadir una alerta? (s/n)")
+    while (confirmacion === "s") {
+        let fechaHoraAlerta = new Date(prompt("Dime la fecha y hora de la nueva alerta (AAAA-MM-DDTHH:MM)."));
+        let mensajeAlerta = prompt("Dime el mensaje de la nueva alerta.");
+        alertas.push(new Alerta(fechaHoraAlerta, mensajeAlerta));
+
+        confirmacion = prompt("¿Quieres otra alerta? (s/n)");
+    }
+
+    let nuevoEvento = new Evento(nombreEvento, textoEvento, fechaHoraEvento, lugarEvento, invitados, alertas);
+    console.log(nuevoEvento.alertas);
+    activarAlertasEvento(nuevoEvento);
     agenda.push(nuevoEvento);
+}
 
-    //return nuevoEvento;
+function activarAlertasEvento(evento) {
+    const ahora = new Date();
+    for (const alerta of evento.alertas) {
+        const tiempoRestante = alerta.fechaHora - ahora;
+        if (tiempoRestante > 0) {
+            alerta.timerID = setTimeout(() => {
+                alert(`${evento.nombre}: ${alerta.mensajeAlerta}`);
+            }, tiempoRestante);
+        }
+    }
 }
 
 function crearOtroEvento() {
@@ -124,7 +163,7 @@ function crearOtroEvento() {
 function borrarEvento() {
     let nombre = prompt("Dime el nombre del evento que deseas borrar.");
 
-    const indice = agenda.find((evento) => evento.nombre === nombre);
+    const indice = agenda.findIndex((evento) => evento.nombre === nombre);
 
     // La función flecha es lo mismo que esto
     /* function buscarNombre(evento) {
@@ -145,24 +184,139 @@ function borrarEvento() {
 function modificarEvento() {
     let nombre = prompt("Dime el nombre del evento que deseas modificar.");
 
-    let indice = agenda.find((evento) => evento.nombre === nombre)
+    // const eventoActual = agenda.find((evento) => evento.nombre === nombre); // Así si queremos obtener el evento a buscar
+
+    // if (eventoActual !== undefined) { // undefined porque si no lo encuentra devuelve undefined
+    //     alert("Se va a modificar el evento " + nombre + ".");
+    // }
+
+    const indice = agenda.findIndex((evento) => evento.nombre === nombre);
 
     if (indice !== -1) {
         alert("Se va a modificar el evento " + nombre + ".");
-        
+
+        let copiaEvento = { ...agenda[indice] }; // Obtiene el objeto en esa posición. Las llaves y los 3 puntos sirven para obtener un nuevo objeto desglosado en la copia
+
+        // nombre, texto, fechaHora, lugar, invitado
+        copiaEvento.nombre = prompt("Dime el nuevo nombre del evento. Actual: " + copiaEvento.nombre);
+        // agenda[indice].nombre = prompt...
+        copiaEvento.texto = prompt("Dime el nuevo texto del evento. Actual: " + copiaEvento.texto);
+        copiaEvento.fechaHora = prompt("Dime la nueva fecha y hora del evento (AAAA-MM-DDTHH:MM). Actual: " + copiaEvento.fechaHora);
+        copiaEvento.lugar = prompt("Dime el nuevo lugar del evento. Actual: " + copiaEvento.lugar);
+
+        let continuarInvitados = prompt("¿Quieres añadir más invitados? (s/n)");
+
+        while (continuarInvitados === "s") {
+            let nombreInvitado = prompt("Dime el nombre del invitado.");
+
+            let emailInvitado = "";
+            while (!emailInvitado.includes("@")) {
+                emailInvitado = prompt("Dime el email del invitado.");
+                if (!emailInvitado.includes("@")) {
+                    alert("El email debe llevar una @");
+                }
+            }
+
+            copiaEvento.invitados.push(new Invitado(nombreInvitado, emailInvitado));
+            continuarInvitados = prompt("¿Quieres otro invitado? (s/n)");
+        }
+
+        let continuarAlertas = prompt("¿Quieres añadir nuevas alertas? (s/n)");
+        while (continuarAlertas === "s") {
+            let fechaHoraAlerta = new Date(prompt("Dime la fecha y hora de la nueva alerta (AAAA-MM-DDTHH:MM)."));
+            let mensajeAlerta = prompt("Dime el mensaje de la alerta.");
+            copiaEvento.alertas.push(new Alerta(fechaHoraAlerta, mensajeAlerta));
+
+            continuarAlertas = prompt("¿Quieres otra alerta? (s/n)");
+        }
+
+        agenda[indice] = copiaEvento;
+        activarAlertasEvento(copiaEvento);
+        alert("Evento modificado.");
+    } else { 
+        alert("No se ha encontrado el evento " + nombre + ".");
     }
-
-
 }
 
 function desactivarAlertas() {
     let nombre = prompt("Dime el nombre del evento del que deseas desactivar las alertas.");
+
+    const indice = agenda.findIndex((evento) => evento.nombre === nombre);
+
+    if (indice !== -1) {
+        for (const alerta of agenda[indice].alertas) {
+            if (alerta.timerID) {
+                clearTimeout(alerta.timerID);
+                alerta.timerID = null;
+            }
+        }
+        alert("Se han desactivado las alertas del evento " + nombre + ".");
+    } else { 
+        alert("No se ha encontrado el evento " + nombre + ".");
+    }
 }
 
-function borrarEventoAnterior() {
+function borrarEventosPasados() {
+    const ahora = new Date();
+    const eventosPasados = agenda.filter(evento => new Date(evento.fechaHora) < ahora);
 
+    if (eventosPasados.length === 0) {
+        alert("No hay eventos pasados.");
+        return;
+    }
+
+    for (const evento of eventosPasados) {
+        const indice = agenda.findIndex(e => e.nombre === evento.nombre);
+        if (indice !== -1) {
+            for (const alerta of agenda[indice].alertas) {
+                if (alerta.timerID) {
+                    clearTimeout(alerta.timerID);
+                }
+            }
+            agenda.splice(indice, 1);
+        }
+    }
+
+    alert("Se han eliminado todos los eventos pasados.")
 }
 
-function guardarMostrarEvento() { // Tenemos que cargar el local storage, guardar los datos actuales y mostrarlos.
-    
+function guardarMostrarEvento() {
+    localStorage.setItem("agenda", JSON.stringify(agenda)); // Convertimos agenda en un texto, porque en el localstorage solo se guardan cadenas de texto
+    document.write(
+        `<h1>AGENDA</h1>
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Texto</th>
+                <th>Fecha y hora</th>
+                <th>Lugar</th>
+                <th>Invitados</th>
+                <th>Alertas</th>
+            </tr>`
+    );
+    for (const evento of agenda) {
+        document.write(
+            `<tr>
+                <td>${evento.nombre}</td>
+                <td>${evento.texto}</td>
+                <td>${evento.fechaHora}</td>
+                <td>${evento.lugar}</td>
+                <td>`
+            );
+        for (const invitado of evento.invitados) {
+            document.write(`<ul>${invitado.nombre} - ${invitado.email}</ul>`);
+        }
+        document.write(
+            `</td>
+            <td>`
+        );
+        for (const alerta of evento.alertas) {
+            document.write(`<ul>${alerta.fechaHora} - ${alerta.mensajeAlerta}</ul>`);
+        }
+        document.write(
+            `</td>
+            </tr>`
+        );
+    }
+    document.write("</table>");
 }
