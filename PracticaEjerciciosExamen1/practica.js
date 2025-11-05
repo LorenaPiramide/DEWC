@@ -419,52 +419,53 @@
 
 // Usa métodos de array (push, pop, map, filter, reduce) al menos en dos casos distintos.
 
-// FIXME: let numeros = [5, 2, 6, 8, 1];
-// let suma = 0;
+// FIXME: 
+let numeros = [5, 2, 6, 8, 1];
+let suma = 0;
 
-// numeros.push(2, 4, 8);
+numeros.push(2, 4, 8);
 
-// let eliminado = numeros.pop();
+let eliminado = numeros.pop();
 
-// console.log(`Numero eliminado: ${eliminado}`);
+console.log(`Numero eliminado: ${eliminado}`);
 
-// let nuevoArray = numeros.map((num) => {
-//     return num*2;
-// });
+let nuevoArray = numeros.map((num) => {
+    return num*2;
+});
 
-// let nuevoArrayCorto = numeros.map((num) => num * 2);
+let nuevoArrayCorto = numeros.map((num) => num * 2);
 
-// for (const numero of numeros) {
-//     // suma += numero;
-//     console.log(numero);
-// }
-// // console.log(suma);\
+for (const numero of numeros) {
+    // suma += numero;
+    console.log(numero);
+}
+// console.log(suma);
 
-// console.log("Map array.");
+console.log("Map array.");
 
-// for (const numero of nuevoArray) {
-//     console.log(numero);
-// }
+for (const numero of nuevoArray) {
+    console.log(numero);
+}
 
-// let nuevoFilter = numeros.filter((num) => {
-//     return num > 5;
-// });
+let nuevoFilter = numeros.filter((num) => {
+    return num > 5;
+});
 
-// let nuevoFilterCorto = numeros.filter((num) => num > 5);
+let nuevoFilterCorto = numeros.filter((num) => num > 5);
 
-// console.log("Filter array");
+console.log("Filter array");
 
-// for (const numero of nuevoFilter) {
-//     console.log(numero);
-// }
+for (const numero of nuevoFilter) {
+    console.log(numero);
+}
 
-// let reduceSuma = numeros.reduce((acumulador, num) => {
-//     return acumulador + num;
-// }, 0); // Acumulador, guarda el número que va sumando; num, el número que suma; 0, opcional, desde qué valor empieza la acumulación, si no se pone, es el primer elemento del array, FIXME: IMPORTANTE
+let reduceSuma = numeros.reduce((acumulador, num) => {
+    return acumulador + num;
+}, 0); // Acumulador, guarda el número que va sumando; num, el número que suma; 0, opcional, desde qué valor empieza la acumulación, si no se pone, es el primer elemento del array, FIXME: IMPORTANTE
 
-// let reduceSumaCorto = numeros.reduce((acumulador, num) => acumulador + num, 0)
+let reduceSumaCorto = numeros.reduce((acumulador, num) => acumulador + num, 0)
 
-// console.log(`Suma con reduce: ${reduceSuma}`);
+console.log(`Suma con reduce: ${reduceSuma}`);
 
 // TODO:
 
