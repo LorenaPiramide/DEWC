@@ -625,3 +625,89 @@
 // setTimeout(() => {
 //   alert("¡Han pasado 3 segundos!");
 // }, 3000);
+
+
+// FIXME: Guardar y leer
+// localStorage.setItem("nombre", "Lore");
+// let user = localStorage.getItem("nombre");
+// console.log(`Usuario guardado: ${user}`);
+
+//FIXME: Borrar
+// localStorage.removeItem("nombre");
+
+// FIXME:
+
+// let precio = 19.987;
+// let descuento = 15; // %
+// let precioFinal = precio - (precio * descuento / 100);
+
+// console.log(`Precio final (sin redondear): ${precioFinal}`);
+// console.log(`Precio final (redondeado): ${Math.round(precioFinal * 100) / 100}€`);
+
+// FIXME:
+
+// let aleatorio = Math.floor(Math.random() * 6) + 1;
+// alert(`Has sacado un ${aleatorio} en el dado 🎲`);
+
+// FIXME:"
+
+// let ahora = new Date();
+// console.log(ahora.toString());
+// console.log(ahora.toLocaleDateString());
+// console.log(ahora.toLocaleTimeString());
+
+// let dia = ahora.getDate();
+// let mes = ahora.getMonth() + 1; // (0 = enero)
+// let año = ahora.getFullYear();
+// let hora = ahora.getHours();
+
+// console.log(`Hoy es ${dia}/${mes}/${año}, y son las ${hora}h`);
+
+// let inicio = new Date("2025-01-01");
+// let hoy = new Date();
+// let diferencia = hoy - inicio; // milisegundos
+
+// let dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+// console.log(`Han pasado ${dias} días desde el inicio del año`);
+
+// FIXME: Pedir nombre y guardar en localStorage
+// let nombre = localStorage.getItem("usuario");
+// if (!nombre) {
+//   nombre = prompt("¿Cómo te llamas?");
+//   localStorage.setItem("usuario", nombre);
+// }
+
+// // Contador de visitas
+// let visitas = Number(localStorage.getItem("visitas")) || 0;
+// visitas++;
+// localStorage.setItem("visitas", visitas);
+
+// // Fecha y saludo
+// let fecha = new Date();
+// let hora = fecha.getHours();
+// let saludo = hora < 12 ? "Buenos días" : hora < 20 ? "Buenas tardes" : "Buenas noches";
+
+// // Número aleatorio de la suerte
+// let suerte = Math.ceil(Math.random() * 10);
+
+// // Mostrar info
+// alert(`${saludo}, ${nombre}!\nLlevas ${visitas} visitas.\nTu número de la suerte es ${suerte}.`);
+
+// // Mostrar por consola el día exacto
+// console.log(`Hoy es ${fecha.toLocaleDateString()} a las ${fecha.toLocaleTimeString()}`);
+
+// FIXME: Mostrar mensaje inicial
+// document.write("Cargando...<br>");
+// console.log("Cargando...");
+
+// // Cambiar mensaje tras 2 segundos
+// setTimeout(() => {
+//   document.write("Listo!<br>");
+//   console.log("Listo!");
+//   alert("Proceso terminado");
+// }, 2000);
+
+// setTimeout(() => {
+//   document.write("<br><br>");
+//   console.log("Mensaje eliminado");
+// }, 4000);
