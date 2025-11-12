@@ -1,0 +1,24 @@
+#padre {
+    background-color: yellow;
+    position: relative;
+    height: 150px;
+    width: 150px;
+}
+
+#hijo {
+    background-color: green;
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    margin-top: 5px;
+    margin-left: 25px;
+}
+
+p {
+    background-color: blue;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    margin-left: 25px;
+    margin-top: 10px;
+}
