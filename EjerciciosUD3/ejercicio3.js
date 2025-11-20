@@ -1,0 +1,1 @@
+// Muestra en un párrafo de documento las coordenadas actualizadas en las que se encuentra el ratón cada vez que se mueva.
