@@ -14,9 +14,11 @@
 // también existen pero recomendable con los indicados por ser más actuales y flexibles.
 document.addEventListener("DOMContentLoaded", mostrarInfo);
 
-const divInfo = document.querySelector("#mostarInformacion");
+function mostrarInfo() {
+    const divInfo = document.querySelector("#mostarInformacion");
+    divInfo.innerHTML += `El número de párrafos es: ${document.querySelectorAll("p")[0].innerText.substring(0, 20)}</br>`;
+}
 
-divInfo.innerHTML += `El número de párrafos es: ${document.querySelectorAll("p")[0].innerText.substring(0, 20)}</br>`;
 
 
 
