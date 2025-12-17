@@ -1,0 +1,8 @@
+span {
+    color: red;
+}
+
+.invalido {
+    background-color: rgba(255, 122, 122, 0.781);
+    color: red;
+}

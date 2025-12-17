@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./validacion.js"></script>
+</head>
+<body>
+    <h1>Registro de usuario</h1>
+    <div id="formulario">
+        <label for="nombre">Nombre<span>*</span></label>
+        <input type="text" name="nombre" id="nombre">
+        <span id="errorNombre"></span>
+        <br>
+        <label for="apellidos">Apellidos<span>*</span></label>
+        <input type="text" name="apellidos" id="apellidos">
+        <br>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email">
+        <br>
+        <label for="dni">DNI<span>*</span></label>
+        <input type="text" name="dni" id="dni">
+        <br>
+        <label for="username">Username<span>*</span></label>
+        <input type="text" name="username" id="username">
+        <br>
+        <label for="password">Contraseña<span>*</span></label>
+        <input type="text" name="password" id="password">
+        <br>
+        <label for="repetirPassword">Repetir Contraseña<span>*</span></label>
+        <input type="text" name="repetirPassword" id="repetirPassword">
+        <br>
+        <label for="avisoComercial">¿Deseas recibir avisos comerciales?</label>
+        <input type="checkbox" name="avisoComercial" id="avisoComercial">
+        <br>
+        <input type="button" name="registrarse" id="registrarse" value="Registrarse">
+    </div>
+</body>
+</html>
