@@ -15,8 +15,23 @@
 document.addEventListener("DOMContentLoaded", mostrarInfo);
 
 function mostrarInfo() {
-    const divInfo = document.querySelector("#mostarInformacion");
-    divInfo.innerHTML += `El número de párrafos es: ${document.querySelectorAll("p")[0].innerText.substring(0, 20)}</br>`;
+    const divInfo=document.querySelector("#mostrarInformacion")
+
+    divInfo.innerHTML+=`El numero de parrafos es: ${document.querySelectorAll("p").length}</br>`;
+
+    divInfo.innerHTML+=`Los 20 primeros caracteres del primer párrafo: ${document.querySelectorAll("p")[0].innerText.substring(0,20)}<\br>`;
+
+    divInfo.innerHTML+=`El número de enlaces: ${document.querySelectorAll("a").length}</br>`;
+
+    divInfo.innerHTML+=`La dirección a la que apunta el segundo enlace: ${document.querySelectorAll("a")[1].href}</br>`;
+
+    divInfo.innerHTML+=`La dirección a la que apunta el penúltimo enlace: ${document.querySelectorAll("a")[document.querySelectorAll("a").length-2].href}</br>`;
+
+    divInfo.innerHTML+=`El numero de enlaces que apuntan a “https://www.cpifppiramide.com/”: ${document.querySelectorAll("a[href='https://www.cpifppiramide.com/']").length}</br>`;
+
+    divInfo.innerHTML+=`El número de enlaces que hay en el segundo párrafo: ${document.querySelectorAll("p")[1].querySelectorAll("a").length}</br>`;
+
+    divInfo.innerHTML+=`El número de enlaces hijos de un p que tenga color red: ${document.querySelector('p[style="color:red"]').querySelectorAll("a").length}</br>`;
 }
 
 
