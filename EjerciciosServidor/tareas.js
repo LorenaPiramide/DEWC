@@ -16,6 +16,10 @@ function pintarTareas(tareas) {
     });
 }
 
+function crearTarea() {
+    
+}
+
 function cargarTareas() {
     fetch(URL + "tareas")
     .then(response => response.json())
@@ -23,5 +27,5 @@ function cargarTareas() {
 }
 
 function borrarTarea(tarea) {
-    
+
 }
